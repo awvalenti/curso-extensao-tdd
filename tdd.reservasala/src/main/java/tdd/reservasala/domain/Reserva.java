@@ -78,4 +78,8 @@ public class Reserva {
 		return sala + ", de " + horaInicio + "h a " + horaFim + "h, para " + usuario;
 	}
 
+	public Sala getSala() {
+		return sala;
+	}
+
 }

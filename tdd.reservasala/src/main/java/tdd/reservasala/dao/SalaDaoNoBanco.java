@@ -6,8 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
+import br.com.caelum.vraptor.ioc.Component;
 import tdd.reservasala.domain.Sala;
 
+@Component
 public class SalaDaoNoBanco implements SalaDao {
 
 	private final EntityManagerFactory emf;

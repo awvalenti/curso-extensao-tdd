@@ -1,6 +1,8 @@
 package tdd.reservasala.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import tdd.reservasala.dao.ReservaDao;
 import tdd.reservasala.dao.SalaDao;
@@ -8,7 +10,9 @@ import tdd.reservasala.domain.Reserva;
 import tdd.reservasala.domain.Sala;
 import tdd.reservasala.domain.Usuario;
 import tdd.reservasala.service.exception.SalaJaReservadaException;
+import br.com.caelum.vraptor.ioc.Component;
 
+@Component
 public class ReservaService {
 
 	private final ReservaDao reservaDao;
@@ -35,6 +39,16 @@ public class ReservaService {
 		}
 
 		reservaDao.incluir(new Reserva(usuario, sala, horaInicio, horaFim));
+	}
+	
+	public Map<Long, Reserva> buscarReservasPorIdSala(long salaId) {
+		Map<Long, Reserva> reservas = new HashMap<>();
+		
+		for (Reserva reserva : reservaDao.buscarTodas()) {
+			reservas.put(reserva.getSala().getId(), reserva);
+		}
+		
+		return reservas;
 	}
 
 }
