@@ -10,4 +10,6 @@ public interface SalaDao {
 
 	List<Sala> buscarTodas();
 
+	void incluir(Sala sala);
+
 }

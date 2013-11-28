@@ -11,6 +11,8 @@ public interface ReservaDao {
 
 	void excluir(Reserva reserva);
 
+	List<Reserva> buscarTodas();
+
 	List<Reserva> buscarReservasConflitantes(Sala sala, int horaInicio, int horaFim);
 
 }
