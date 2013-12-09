@@ -47,7 +47,7 @@ public class RodadaTest {
 
 	@Test
 	public void deve_terminar_quando_tres_ciclos_terminarem() {
-		rodada = rodadaCom(cicloVencidoPor(jose), cicloVencidoPor(jose), cicloVencidoPor(maria));
+		rodada = rodadaCom(cicloVencidoPor(jose), cicloVencidoPor(maria), cicloVencidoPor(maria));
 		assertThat(rodada.terminou(), is(true));
 	}
 
