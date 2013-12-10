@@ -14,4 +14,15 @@ public class Rodada {
 		return ciclos.size() == 3 || ciclos.size() == 2 && ciclos.get(0).calcularVencedor().equals(ciclos.get(1).calcularVencedor());
 	}
 
+	public Jogador calcularVencedor() {
+		Jogador vencedor0 = ciclos.get(0).calcularVencedor();
+		Jogador vencedor1 = ciclos.get(1).calcularVencedor();
+
+		if (ciclos.size() == 2 && vencedor0.equals(vencedor1)) return vencedor0;
+
+		Jogador vencedor2 = ciclos.get(2).calcularVencedor();
+
+		return vencedor0.equals(vencedor2) ? vencedor0 : vencedor1;
+	}
+
 }

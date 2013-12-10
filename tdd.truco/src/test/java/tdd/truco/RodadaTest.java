@@ -51,6 +51,18 @@ public class RodadaTest {
 		assertThat(rodada.terminou(), is(true));
 	}
 
+	@Test
+	public void deve_calcular_vencedor_com_dois_ciclos() {
+		rodada = rodadaCom(cicloVencidoPor(jose), cicloVencidoPor(jose));
+		assertThat(rodada.calcularVencedor(), is(jose));
+	}
+
+	@Test
+	public void deve_calcular_vencedor_com_tres_ciclos() {
+		rodada = rodadaCom(cicloVencidoPor(jose), cicloVencidoPor(maria), cicloVencidoPor(maria));
+		assertThat(rodada.calcularVencedor(), is(maria));
+	}
+
 	private static Rodada rodadaCom(Ciclo... ciclos) {
 		return new Rodada(Arrays.asList(ciclos));
 	}

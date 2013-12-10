@@ -16,9 +16,9 @@ public class Ciclo {
 		if (!permiteJogadaDe(jogador)) throw new IllegalStateException(jogador + " tentou jogar duas vezes seguidas");
 
 		jogadas.add(new Jogada(jogador, carta));
-		saida.aoFazerJogada(jogador, carta);
+		saida.jogadaFeita(jogador, carta);
 
-		if (terminou()) saida.aoTerminarCiclo(calcularVencedor());
+		if (terminou()) saida.cicloFechadoComVencedor(calcularVencedor());
 	}
 
 	public boolean terminou() {

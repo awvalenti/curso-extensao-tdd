@@ -29,17 +29,11 @@ public class CicloTest {
 	}
 
 	@Test
-	public void deve_informar_jogada_ao_recebe_la_e_indicar_estar_em_andamento() {
+	public void deve_informar_jogada_e_indicar_estar_em_andamento() {
 		ciclo.fazerJogada(jogador1, dama);
 
-		verify(saida).aoFazerJogada(jogador1, dama);
+		verify(saida).jogadaFeita(jogador1, dama);
 		assertThat(ciclo.terminou(), is(false));
-	}
-
-	@Test(expected = IllegalStateException.class)
-	public void deve_rejeitar_jogadas_seguidas_do_mesmo_jogador() {
-		ciclo.fazerJogada(jogador1, dama);
-		ciclo.fazerJogada(jogador1, rei);
 	}
 
 	@Test
@@ -47,8 +41,14 @@ public class CicloTest {
 		ciclo.fazerJogada(jogador1, dama);
 		ciclo.fazerJogada(jogador2, rei);
 
-		verify(saida).aoTerminarCiclo(jogador2);
+		verify(saida).cicloFechadoComVencedor(jogador2);
 		assertThat(ciclo.terminou(), is(true));
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void deve_rejeitar_jogadas_seguidas_do_mesmo_jogador() {
+		ciclo.fazerJogada(jogador1, dama);
+		ciclo.fazerJogada(jogador1, rei);
 	}
 
 }

@@ -2,8 +2,12 @@ package tdd.truco;
 
 public interface SaidaJogo {
 
-	void aoFazerJogada(Jogador jogador, Carta carta);
+	void rodadaIniciada();
 
-	void aoTerminarCiclo(Jogador vencedor);
+	void cicloIniciado(Jogador primeiroAJogar);
+
+	void jogadaFeita(Jogador jogador, Carta carta);
+
+	void cicloFechadoComVencedor(Jogador vencedor);
 
 }
