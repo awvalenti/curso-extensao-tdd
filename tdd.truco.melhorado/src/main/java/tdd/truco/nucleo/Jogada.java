@@ -10,13 +10,18 @@ public class Jogada implements Comparable<Jogada> {
 		this.carta = carta;
 	}
 
+	public Jogador getJogador() {
+		return jogador;
+	}
+
 	@Override
 	public int compareTo(Jogada outra) {
 		return carta.compareTo(outra.carta);
 	}
 
-	public Jogador getJogador() {
-		return jogador;
+	@Override
+	public String toString() {
+		return jogador + ">" + carta;
 	}
 
 }

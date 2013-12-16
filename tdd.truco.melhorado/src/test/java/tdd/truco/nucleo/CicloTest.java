@@ -7,6 +7,7 @@ import static tdd.truco.nucleo.Carta.*;
 import static tdd.truco.nucleo.resultado.FabricaResultado.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +43,23 @@ public class CicloTest {
 	@Test
 	public void deve_terminar_com_vencedor_quando_todos_jogadores_jogarem_e_houver_maior_carta() {
 		assertThat(paraJogadas(de(jorge, TRES), de(amanda, DOIS)), is(vencedor(jorge)));
+	}
+
+	@Test
+	public void deve_delegar_funcionalidade_de_acrescentar_jogadas() {
+		Jogada jogada = new Jogada(jorge, AS);
+		ciclo.acrescentarJogada(jogada);
+		verify(estadoJogadas).acrescentarJogada(jogada);
+	}
+
+	@Test
+	public void deve_delegar_contagem_de_jogadas() {
+		@SuppressWarnings("unchecked")
+		List<Jogada> listaMock = mock(List.class);
+		when(estadoJogadas.getJogadas()).thenReturn(listaMock);
+
+		ciclo.getQuantidadeJogadas();
+		verify(listaMock).size();
 	}
 
 	private Resultado paraNenhumaJogada() {

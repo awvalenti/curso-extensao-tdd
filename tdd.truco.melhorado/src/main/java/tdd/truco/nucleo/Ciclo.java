@@ -32,4 +32,12 @@ public class Ciclo {
 		}
 	}
 
+	public void acrescentarJogada(Jogada jogada) {
+		estadoJogadas.acrescentarJogada(jogada);
+	}
+
+	public int getQuantidadeJogadas() {
+		return estadoJogadas.getJogadas().size();
+	}
+
 }
